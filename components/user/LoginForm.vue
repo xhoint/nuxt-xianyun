@@ -23,6 +23,7 @@ export default {
     return {
       // 表单数据
       form: {
+        
         username: "13800138000",
         password: "123456"
       },
@@ -59,7 +60,12 @@ export default {
             method: "POST",
             data: this.form
           }).then(res => {
-            console.log(res.data);
+            // console.log(res.data);
+            const { data } = res;
+            // 保存到本地
+            // localStorage.setItem("store", JSON.stringify(data));
+            // 调用mutations方法,把data存到store
+            this.$store.commit("user/setUserInfo", data);
           });
         }
       });
